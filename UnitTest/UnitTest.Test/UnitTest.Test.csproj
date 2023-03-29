@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\XUnitTest.App\XUnitTest.App.csproj" />
+    <ProjectReference Include="..\UnitTest.WEB\UnitTest.WEB.csproj" />
   </ItemGroup>
 
 </Project>
