@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using UnitTest.WEB.Helpers;
 using UnitTest.WEB.Models;
 using UnitTest.WEB.Repository;
 
@@ -17,6 +18,17 @@ namespace UnitTest.WEB.Controllers
         {
             _productRepository = productRepository;
         }
+
+        //Business Method For Test
+        [HttpGet("{num1}/{num2}")]
+        public IActionResult Add(int num1, int num2)
+        {
+            //Helper
+            var result = new Helper().Add(num1, num2);
+
+            return Ok(result);
+        }
+
 
         // GET: api/ProductsApi
         [HttpGet]

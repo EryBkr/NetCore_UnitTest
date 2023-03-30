@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnitTest.WEB.Controllers;
+using UnitTest.WEB.Helpers;
 using UnitTest.WEB.Models;
 using UnitTest.WEB.Repository;
 using Xunit;
@@ -13,11 +14,13 @@ namespace UnitTest.Test
     public class ProductApiControllerTest
     {
         private readonly Mock<IRepository<Product>> _mockRepo;
+        private readonly Helper _helper;
         private readonly ProductsApiController _controller;
         private List<Product> _products;
 
         public ProductApiControllerTest()
         {
+            _helper = new Helper();
             _mockRepo = new Mock<IRepository<Product>>();
             _controller = new ProductsApiController(_mockRepo.Object);
             _products = new List<Product>()
@@ -28,6 +31,17 @@ namespace UnitTest.Test
             };
         }
 
+        #region Add Bussiness
+        [Theory]
+        [InlineData(5,6,11)]
+        [InlineData(7, 8,15)]
+        [InlineData(5000, 6000,11000)]
+        public void Add_ExecuteAction_ReturnOkResultWithTotalCount(int num1,int num2,int total)
+        {
+            var result = _helper.Add(num1,num2);
+            Assert.Equal(total,result);
+        }
+        #endregion
 
         #region Get/GetAll
         [Fact]
