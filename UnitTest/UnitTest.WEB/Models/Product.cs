@@ -18,5 +18,11 @@ namespace UnitTest.WEB.Models
 
         [Required]
         public int Stock { get; set; }
+
+
+
+        //Db Unit Test işlemlerinde genellikle ilişkili datalarla çalışırız bundan kaynaklı yeni bir tablo ekliyoruz
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }
